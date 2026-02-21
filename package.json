@@ -1,0 +1,35 @@
+{
+  "name": "ops-forge",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:backend": "bun run --filter @ops-forge/backend dev",
+    "dev:frontend": "bun run --filter @ops-forge/frontend dev",
+    "dev": "bun run dev:backend & bun run dev:frontend",
+    "build:backend": "bun run --filter @ops-forge/backend build",
+    "build:frontend": "bun run --filter @ops-forge/frontend build",
+    "build": "bun run build:backend && bun run build:frontend",
+    "start:backend": "bun run --filter @ops-forge/backend start",
+    "migrate": "bun run --filter @ops-forge/database migrate",
+    "migrate:commit": "bun run --filter @ops-forge/database migrate:commit",
+    "generate-types": "bun run --filter @ops-forge/database generate-types",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "test": "bun test",
+    "deploy:backend": "bun run --filter @ops-forge/backend deploy",
+    "deploy:frontend": "bun run --filter @ops-forge/frontend deploy",
+    "deploy": "bun run deploy:backend && bun run deploy:frontend"
+  },
+  "trustedDependencies": [
+    "@nestjs/core",
+    "serverless"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "2.4.4",
+    "@types/bun": "^1.3.9"
+  }
+}

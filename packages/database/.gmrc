@@ -1,0 +1,9 @@
+{
+  "pgSettings": {},
+  "placeholders": {},
+  "afterReset": [],
+  "afterAllMigrations": [],
+  "afterCurrent": [],
+  "blankMigrationContent": "-- Enter migration here\n",
+  "manageGraphileMigrateSchema": true
+}

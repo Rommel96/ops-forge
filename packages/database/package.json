@@ -1,0 +1,25 @@
+{
+  "name": "@ops-forge/database",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc --build",
+    "migrate": "bun --env-file=.env run graphile-migrate migrate",
+    "migrate:watch": "bun --env-file=.env run graphile-migrate watch",
+    "migrate:commit": "bun --env-file=.env run graphile-migrate commit",
+    "migrate:uncommit": "bun --env-file=.env run graphile-migrate uncommit",
+    "migrate:reset": "bun --env-file=.env run graphile-migrate reset",
+    "migrate:status": "bun --env-file=.env run graphile-migrate status",
+    "generate-types": "bun run scripts/generate-types.ts"
+  },
+  "dependencies": {
+    "graphile-migrate": "^2.0.0-rc.2",
+    "pg": "^8.13.1",
+    "kysely": "^0.27.6",
+    "kysely-codegen": "^0.17.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/pg": "^8.11.0"
+  }
+}

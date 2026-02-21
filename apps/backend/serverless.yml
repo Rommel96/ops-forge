@@ -1,0 +1,36 @@
+service: ops-forge-api
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs22.x
+  region: us-east-1
+  memorySize: 256
+  timeout: 15
+  logRetentionInDays: 7
+  versionFunctions: false
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+    JWT_SECRET: ${env:JWT_SECRET}
+    CORS_ORIGIN: ${env:CORS_ORIGIN}
+    NODE_ENV: production
+
+functions:
+  api:
+    handler: dist/lambda.handler
+    events:
+      - httpApi:
+          method: '*'
+          path: '/{proxy+}'
+      - httpApi:
+          method: '*'
+          path: /
+
+package:
+  individually: true
+  patterns:
+    - 'dist/**'
+    - 'node_modules/**'
+    - '!node_modules/.cache/**'
+    - '!src/**'
+    - '!test/**'
