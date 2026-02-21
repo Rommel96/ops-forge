@@ -30,6 +30,7 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       SHADOW_DATABASE_URL: ${{ secrets.SHADOW_DATABASE_URL }}
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
       CORS_ORIGIN: ${{ vars.CORS_ORIGIN }}
       AWS_REGION: us-east-1
       SLS_TELEMETRY_DISABLED: '1'
@@ -75,5 +76,4 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Deploy backend with Serverless
-        working-directory: apps/backend
-        run: bunx serverless deploy --stage prod
+        run: bun run --filter @ops-forge/backend deploy --stage prod
