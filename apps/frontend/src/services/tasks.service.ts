@@ -1,9 +1,9 @@
-import api from './api';
 import type {
   AppPublicTaskPriority,
   AppPublicTaskStatus,
   Task as SharedTask,
 } from '@ops-forge/shared-types';
+import api from './api';
 
 export type TaskStatus = AppPublicTaskStatus;
 export type TaskPriority = AppPublicTaskPriority;

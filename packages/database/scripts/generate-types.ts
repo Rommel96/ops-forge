@@ -11,7 +11,15 @@ console.log('🔍 Introspecting database schema...');
 console.log(`📝 Output: ${outputPath}`);
 
 try {
-  execSync(`npx kysely-codegen --out-file "${outputPath}" --dialect postgres`, {
+  execSync(
+    `bunx --bun kysely-codegen --out-file "${outputPath}" --dialect postgres`,
+    {
+      stdio: 'inherit',
+      env: { ...process.env },
+    },
+  );
+  // Normalize generated output to repository formatting conventions.
+  execSync(`bunx --bun @biomejs/biome format --write "${outputPath}"`, {
     stdio: 'inherit',
     env: { ...process.env },
   });

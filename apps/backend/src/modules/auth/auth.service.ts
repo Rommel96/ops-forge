@@ -39,6 +39,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
+    // biome-ignore lint/correctness/noUnusedVariables: false positive
     const { password_hash, ...user } = result;
     return user;
   }

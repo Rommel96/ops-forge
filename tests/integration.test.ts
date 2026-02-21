@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeAll, afterAll } from 'bun:test';
+import { afterAll, beforeAll, describe, expect, it } from 'bun:test';
 import type { Subprocess } from 'bun';
 
 const TEST_API_PORT = '3100';
