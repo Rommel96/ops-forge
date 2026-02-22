@@ -80,10 +80,11 @@ VITE_API_URL=http://localhost:3000/api/v1
 ```
 
 ### 3. Start Database
-Run the provided Docker composition to spin up PostgreSQL:
+You can easily spin up a local PostgreSQL instance with Docker using the credentials defined in the `.env` file:
 ```bash
-docker-compose up -d
+docker run --name ops-forge-db -e POSTGRES_USER=devdb -e POSTGRES_PASSWORD=password -e POSTGRES_DB=ops_forge -p 5433:5432 -d postgres:15-alpine
 ```
+*(Optionally, you can use any existing local PostgreSQL installation. Just ensure the `DATABASE_URL` port and credentials in `.env` match your setup).*
 
 ### 4. Install Dependencies
 From the monorepo root:
@@ -143,7 +144,7 @@ The project includes a self-contained integration test suite using `bun:test`, w
 
 **Prerequisites to running tests:**
 1. Your `.env` files must be properly configured.
-2. The local database must be running (`docker-compose up -d`).
+2. The local database must be running (e.g. via the `docker run` command).
 3. The database must be migrated and seeded (`bun run migrate:reset --erase` and `bun run migrate:commit -m 'seed-users'`).
 
 Once the database is ready, you can execute the test suite from the root:
