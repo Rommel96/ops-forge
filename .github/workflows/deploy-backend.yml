@@ -55,8 +55,7 @@ jobs:
         run: bun run --filter @ops-forge/backend build
 
       - name: Install backend production dependencies for Lambda package
-        working-directory: apps/backend
-        run: npm install --omit=dev --no-audit --no-fund
+        run: npm install --prefix apps/backend --omit=dev --ignore-scripts --no-audit --no-fund --workspaces=false
 
       - name: Prepare database migration env file
         run: |
