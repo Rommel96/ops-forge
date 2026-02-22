@@ -17,6 +17,27 @@ Ops-Forge is an internal technical workflow suite designed to manage tasks effic
   - Backend: AWS Lambda via Serverless Framework (`@codegenie/serverless-express`)
   - Frontend: Cloudflare Pages via Wrangler
 
+## 💡 General Description & Architecture Approach
+
+Ops-Forge is built to be a robust, scalable, and highly maintainable full-stack application leveraging a modern toolchain. 
+
+**Why this stack?**
+- **Bun:** Chosen for its incredibly fast package management, native workspace support, and built-in test runner. It drastically speeds up the development lifecycle.
+- **NestJS + Kysely:** NestJS provides a highly structured, scalable, and opinionated backend architecture. Combined with Kysely, we ensure strict type safety from the database layer up to the API responses, avoiding traditional ORM overhead while keeping raw SQL flexibility.
+- **React + Vite + Zustand:** Vite offers an instant feedback loop during frontend development. React, paired with Zustand for minimalist and performant state management, ensures a snappy Single Page Application (SPA).
+- **Serverless + Cloudflare Pages:** Deploying the NestJS API to AWS Lambda ensures a cost-effective, auto-scaling backend. Cloudflare Pages provides blazing-fast, globally distributed edge hosting for the frontend.
+
+## 👤 End-User Perspective (How it works)
+
+From an end-user standpoint, Ops-Forge is a clear, intuitive task management system:
+1. **Authentication:** The user lands on a secure login screen. Upon entering valid credentials, they are authenticated via JWT and redirected to their dashboard.
+2. **Task Management (CRUD):** 
+   - **Create:** Users can add new tasks by filling out a form (Title, Description, Status, Priority, Due Date).
+   - **Read & Filter:** Users see a modern, responsive list of their tasks and can filter them by status via intuitive tabs.
+   - **Update:** Users can edit existing tasks (e.g., changing status to "In Progress").
+   - **Delete:** Users can safely remove tasks with a confirmation prompt.
+3. **Session:** If the session expires or the user logs out, they are securely routed back to the login screen, and local state is cleared.
+
 ## 📂 Monorepo Structure
 
 ```text
