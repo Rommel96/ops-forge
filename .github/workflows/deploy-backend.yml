@@ -54,6 +54,10 @@ jobs:
       - name: Build backend
         run: bun run --filter @ops-forge/backend build
 
+      - name: Install backend production dependencies for Lambda package
+        working-directory: apps/backend
+        run: npm install --omit=dev --no-audit --no-fund
+
       - name: Prepare database migration env file
         run: |
           cat > packages/database/.env << EOF
